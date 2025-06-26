@@ -1,0 +1,99 @@
+import React from "react";
+import { Chip, Drawer, Input } from "@mui/joy";
+export const SelectEthTokenDrawer = ({ open, setopen, seticon }: any) => {
+  const toggleReceived =
+    (inOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setopen(inOpen);
+    };
+
+  return (
+    <Drawer
+      open={open}
+      className="w-[390px]"
+      anchor="right"
+      onClose={toggleReceived(false)}
+    >
+      <div className="flex items-center px-[24px] border-b-[1px] border-b-[#EEF0F2] py-[20px]">
+        <button
+          onClick={() => setopen(false)}
+          className="w-[35px] h-[35px] rounded-full flex items-center justify-center bg-[#EEF0F2] cursor-pointer "
+        >
+          <img src="/images/drawer/arrow.svg" alt="" />
+        </button>
+        <p className="text-[#030915] ml-2 text-[16px] flex-1 font-normal">
+          Send Token
+        </p>
+        <img
+          onClick={() => {
+            setopen(false);
+          }}
+          src="/images/drawer/close.svg"
+          className="cursor-pointer"
+          alt=""
+        />
+      </div>
+
+      <div className="py-[17px] px-[24px] flex flex-col flex-1">
+        <div className="border-[1px] flex items-center justify-between mb-[8px] border-[#E1E6EB] px-[16px] py-[16px]  rounded-[16px]">
+          <img src="/images/coins/eth.svg" className="w-10 h-10 mr-2" alt="" />
+          <div className="flex-1">
+            <h1 className="text-[14px] text-[#030915] font-medium">ETH</h1>
+            <p className="text-[11px] font-normal text-[#525A65]">10.00</p>
+          </div>
+
+          <button
+            onClick={() => {
+              setopen(false);
+              seticon("ETH");
+            }}
+            className="text-[12px] rounded-[6px] cursor-pointer text-[#01BC8D] bg-[#E6F8F4] w-[69px] h-[32px] flex items-center justify-center"
+          >
+            Select
+          </button>
+        </div>
+        <div className="border-[1px] flex items-center justify-between mb-[8px] border-[#E1E6EB] px-[16px] py-[16px]  rounded-[16px]">
+          <img src="/images/coins/usdt.svg" className="w-10 h-10 mr-2" alt="" />
+          <div className="flex-1">
+            <h1 className="text-[14px] text-[#030915] font-medium">USDT</h1>
+            <p className="text-[11px] font-normal text-[#525A65]">0.200</p>
+          </div>
+
+          <button
+            onClick={() => {
+              setopen(false);
+              seticon("USDT");
+            }}
+            className="text-[12px] rounded-[6px] cursor-pointer text-[#01BC8D] bg-[#E6F8F4] w-[69px] h-[32px] flex items-center justify-center"
+          >
+            Select
+          </button>
+        </div>
+        <div className="border-[1px] flex items-center justify-between mb-[8px] border-[#E1E6EB] px-[16px] py-[16px]  rounded-[16px]">
+          <img src="/images/coins/usdc.svg" className="w-10 h-10 mr-2" alt="" />
+          <div className="flex-1">
+            <h1 className="text-[14px] text-[#030915] font-medium">USDC</h1>
+            <p className="text-[11px] font-normal text-[#525A65]">2.00</p>
+          </div>
+
+          <button
+            onClick={() => {
+              setopen(false);
+              seticon("USDC");
+            }}
+            className="text-[12px] rounded-[6px] cursor-pointer text-[#01BC8D] bg-[#E6F8F4] w-[69px] h-[32px] flex items-center justify-center"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </Drawer>
+  );
+};
